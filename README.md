@@ -35,6 +35,7 @@ let tagOpts = {
 	nameFromTagAttr: 'name',
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
+    forceSearch: 2000,
 	noclasses: false,
 	nostyles: false,
 	styles: {
@@ -58,6 +59,30 @@ let tagOpts = {
 render( <Anchor options={tagOpts} />, document.getElementById('anchor-search'));
 
 ```
+##### Options  
+> **searchBar** - *{String}* - ID of main div  
+> **placeholder** - *{String}* - placeholder text  
+> **searchList** - *{String}* -  ID of search list div  
+> **tageSelector** - *{String}* -  selector of tags to use for search list  
+> **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
+> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
+> **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
+> **if `nameFromNextTag == true`**
+> > **nameFromTag** - *{Array}* -  name of the tag the get display name from   
+> > **nameFromTagSaveChildren**  - *{Boolean}* -  if you use `innerHTML` you may want to include some children    
+>
+> **useLocation** - *{Boolean}* -  Use `window.location` instead of scroll  
+> **noclasses** - *{Boolean}* -  do **not** include **any** classes   
+> **nostyles** - *{Boolean}* -  do **not** include **any** styles  
+> **classes** - *{Object}* -  object of classes  
+> **styles** - *{Object}* -  object of styles  
+> **forceSearch** -  *{Number}* - The amount of time to allow for user input before the search is performed.  The user input is cached until done typing.  The default is to force a render at 2 seconds and start the cache over until typing is finished.
+
+
+#####  NOTE  
+> If you pass a **react-router** `history` object as a `prop` then the history will be pushed as well.  
+
+
 
 #### Default inline styles  
 The component will render with these inline styles by default.  Add your style properties with camelCase.  They will be transformed when appropriate.
