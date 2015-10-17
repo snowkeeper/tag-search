@@ -11,7 +11,7 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "app": "lib/anchored.js"
+    "app": "lib/tag-search.js"
   },
 
   map: {

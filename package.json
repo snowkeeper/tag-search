@@ -1,18 +1,29 @@
 {
-  "name": "anchor-search",
+  "name": "tag-search",
   "version": "0.0.1",
-  "description": "search and list named anchor links",
-  "main": "index.js",
+  "description": "search and list html tags like named anchor links",
+  "main": "lib/tag-search.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/snowkeeper/anchor-search"
+    "url": "https://github.com/snowkeeper/tag-search"
   },
   "keywords": [
     "react",
     "systemjs",
     "javascipt",
     "inclusive",
-    "anchor"
+    "anchor",
+    "html",
+    "a",
+    "tag",
+    "code",
+    "h3",
+    "h1",
+    "h2",
+    "search",
+    "tag search",
+    "html tag",
+    "html tags",
   ],
   "browserify": {
     "transform": [
@@ -21,11 +32,6 @@
   },
   "author": "snowkeeper",
   "license": "MIT",
-  "dependencies": {
-    "debug": "^2.2.0",
-    "lodash": "^3.10.1",
-    "react-dom": "^0.14.0"
-  },
   "devDependencies": {
     "babel": "^5.8.23",
     "babelify": "^6.3.0",
