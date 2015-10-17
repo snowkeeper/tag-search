@@ -1,4 +1,3 @@
-// global holdovers
 import { render } from 'react-dom'
 import React from 'react'
 import Anchor from '../../lib/tag-search.js'
