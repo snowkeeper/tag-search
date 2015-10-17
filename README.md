@@ -56,9 +56,9 @@ let tagOpts = {
 	}
 }
 
-render( <Anchor options={tagOpts} />, document.getElementById('anchor-search'));
+render( <SearchTags options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
 
-```
+```javascript  
 ##### Options  
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
