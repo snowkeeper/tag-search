@@ -8,6 +8,8 @@ There are also fully functional builds for System.js and browserify in the examp
 
 `npm i -g live-server` and run `live-server ./examples` to view the output of different setups.  View the [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory for code samples.  
 
+![Imgur](http://i.imgur.com/SaRuKDV.png)
+
 #### Install
 ##### jspm
 ```bash
