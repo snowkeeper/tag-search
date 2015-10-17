@@ -81,7 +81,7 @@ render( <SearchTags options={tagOpts} {...this.props} />, document.getElementByI
 
 
 #####  NOTE  
-> If you pass a **react-router** `history` object as a `prop` then the history will be pushed as well.  
+> If you pass a **react-router** `history` object as  `history={this.props.history}` or `{...this.props}` then the history will be pushed as well.  
 
 
 
