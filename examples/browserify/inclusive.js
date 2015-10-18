@@ -317,6 +317,12 @@ var styles = {
 		'padding': 0,
 		'margin': '-13px',
 		'cursor': 'pointer'
+	},
+	'active': {
+		'backgroundColor': '#c9dbea'
+	},
+	'caution': {
+		'backgroundColor': '#efce9e'
 	}
 
 };
@@ -331,6 +337,12 @@ var defaultStyles = {
 	'li:a': {},
 	'li:heading': {},
 	'context': {},
+	'active': {
+		'backgroundColor': '#c9dbea'
+	},
+	'caution': {
+		'backgroundColor': '#efce9e'
+	},
 	'wrapper': {
 		'height': '50px',
 		'position': 'absolute',
@@ -623,11 +635,11 @@ var Tagged = (function (_React$Component) {
 		value: function catchMenuClick(e) {
 			var thisComponent = this;
 			// catch a menu click and close any menus
-			var $list = thisComponent.$list;
-			$list.hide();
+			thisComponent.hideMenu();
 			thisComponent.disAllowTyping();
+
 			// clean search bar status
-			thisComponent.$searchInput.removeClass('active caution');
+			thisComponent.$searchInput.css('background-color', _styles2['default'].input.backgroundColor);
 		}
 	}, {
 		key: 'hideSearchList',
@@ -642,7 +654,7 @@ var Tagged = (function (_React$Component) {
 			 && $searchDiv.has(e.target).length === 0) // if the target of the click isn't the input...
 			) {
 					thisComponent.hideMenu();
-					(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').removeClass('active caution');
+					(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').css('background-color', _styles2['default'].input.backgroundColor);
 					thisComponent.disAllowTyping();
 					return;
 				}
@@ -834,12 +846,12 @@ var Tagged = (function (_React$Component) {
 					$searchInput.blur().focus();
 
 					// set background to normal
-					$searchInput.removeClass('caution').addClass('active');
+					$searchInput.css('background-color', _styles2['default'].active.backgroundColor);
 				})();
 			} else if (!bBit) {
 				aBit = true;
 				$ul = allAnchors;
-				$searchInput.addClass('caution').removeClass('active');
+				$searchInput.css('background-color', _styles2['default'].caution.backgroundColor);
 			}
 
 			// reset the list so scroll goes to top
