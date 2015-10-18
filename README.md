@@ -8,7 +8,7 @@ There are also fully functional builds for System.js and browserify in the examp
 
 `npm i -g live-server` and run `live-server ./examples` to view the output of different setups.  View the [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory for code samples.  
 
-![Imgur](http://i.imgur.com/SaRuKDV.png)
+![Imgur](http://i.imgur.com/rhY3BdF.png)
 
 #### Install
 ##### jspm
@@ -27,6 +27,8 @@ import SearchTags from 'tag-search'
 
 // add the options
 let tagOpts = {
+	wrapperLeftText: 'menu',
+	wrapperRightText: 'search',
 	searchBar: 'searchBar',
 	placeholder: "quick find",
 	searchList: 'searchList',
@@ -63,6 +65,8 @@ render( <SearchTags options={tagOpts} {...this.props} />, document.getElementByI
 ```  
 
 ##### Options  
+> **wrapperLeftText** - *{String}* -  the "menu" text  
+> **wrapperRightText** - *{String}* -  the "search" text  
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
