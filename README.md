@@ -4,9 +4,9 @@ Add a html tag search box to your page.  Uses ES6 ReactJS classes to produce a c
 
 There are standalone builds available in the [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory.
 
-There are also fully functional builds for System.js and browserify in the examples.
+There are also fully functional builds for System.js and browserify in the  [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory with full source examples.
 
-`npm i -g live-server` and run `live-server ./examples` to view the output of different setups.  View the [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory for code samples.  
+`npm i -g live-server` and run `live-server ./examples` to view the output of different setups. 
 
 ![Imgur](http://i.imgur.com/rhY3BdF.png)
 
