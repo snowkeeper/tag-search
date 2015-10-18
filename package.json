@@ -25,6 +25,11 @@
     "html tag",
     "html tags"
   ],
+  "browserify": {
+    "transform": [
+	  "babelify"
+    ]
+  },
   "author": "snowkeeper",
   "license": "MIT",
   "devDependencies": {
@@ -45,6 +50,7 @@
     "react-dom": "^0.14.0",
     "reactify": "^1.1.1",
     "systemjs": "^0.19.4",
+    "tag-search": "git://github.com/snowkeeper/tag-search",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"

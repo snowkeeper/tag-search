@@ -1,26 +1,170 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// global holdovers
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () {
+	function defineProperties(target, props) {
+		for (var i = 0; i < props.length; i++) {
+			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+		}
+	}return function (Constructor, protoProps, staticProps) {
+		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	};
+})();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) {
+	var _again = true;_function: while (_again) {
+		var object = _x,
+		    property = _x2,
+		    receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+			var parent = Object.getPrototypeOf(object);if (parent === null) {
+				return undefined;
+			} else {
+				_x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+			}
+		} else if ('value' in desc) {
+			return desc.value;
+		} else {
+			var getter = desc.get;if (getter === undefined) {
+				return undefined;
+			}return getter.call(receiver);
+		}
+	}
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) {
+	return obj && obj.__esModule ? obj : { 'default': obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) {
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError('Cannot call a class as a function');
+	}
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _reactDom = require('react-dom');
+function _inherits(subClass, superClass) {
+	if (typeof superClass !== 'function' && superClass !== null) {
+		throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _libAnchoredJs = require('../../lib/anchored.js');
+var _reactDom = require('react-dom');
 
-var _libAnchoredJs2 = _interopRequireDefault(_libAnchoredJs);
+var _libTagSearchJs = require('../../lib/tag-search.js');
+
+var _libTagSearchJs2 = _interopRequireDefault(_libTagSearchJs);
+
+var anchorOpts = {
+	useLocation: false,
+	nostyles: false,
+	noclasses: false,
+	searchBar: 'searchBar',
+	searchList: 'searchList',
+	tagSelector: 'a[name]',
+	wrapperLeftText: 'click for menu',
+	wrapperRightText: 'click to search',
+	styles: {
+		'searchBar': {
+			'height': '50px',
+			'width': '100%',
+			'position': 'fixed',
+			'bottom': 0,
+			'right': 0,
+			'zIndex': 1002,
+			'padding': 0
+		},
+		'input': {
+			'width': '100%',
+			'fontSize': '1.4em',
+			'fontWeight': 'bold',
+			'color': '#88C9FF',
+			'backgroundColor': '#30475B',
+			'border': 'none',
+			'height': '50px',
+			'zIndex': 1003
+		},
+		'inputDiv': {
+			'paddingTop': 0,
+			'paddingRight': 0,
+			'paddingBottom': 0,
+			'paddingLeft': 8,
+			'height': '50px'
+		},
+		'searchList': {
+			'height': '300px',
+			'margin': '-370px 15px 0 15px',
+			'border': '1px solid #ccc',
+			'borderBottom': 'none',
+			'overflowY': 'auto',
+			'backgroundColor': '#535A5F',
+			'padding': '10px 20px',
+			'display': 'none'
+		},
+		'ul': {
+			'fontSize': '13px',
+			'listStyle': 'none',
+			'lineHeight': 1.2,
+			'margin': '0',
+			'padding': 0,
+			'position': 'relative',
+			'zIndex': 2
+		},
+		'li': {
+			'padding': '5px 5px',
+			'color': '#CACFD2'
+		},
+		'li:a': {
+			'color': '#EEAE18',
+			'display': 'block',
+			'padding': '5px 5px 5px 0'
+		},
+		'li:heading': {
+			'fontSize': '1.25em',
+			'textTransform': 'uppercase',
+			'padding': '5px 5px',
+			'color': '#E8ECEF'
+		},
+		'context': {
+			'color': '#F1F1F4',
+			'fontSize': '.9em',
+			'display': 'block',
+			'marginTop': 0,
+			'height': 'auto'
+		},
+		'wrapper': {
+			'height': '50px',
+			'position': 'absolute',
+			'top': 0,
+			'right': 0,
+			'zIndex': 1022,
+			'padding': 0,
+			'width': '100%',
+			'backgroundColor': '#18222A',
+			'color': '#D0DDEA'
+		},
+		'wrapperLeft': {
+			'float': 'right',
+			'width': '50%',
+			'textAlign': 'center',
+			'height': '50px',
+			'padding': 0,
+			'margin': '-13px',
+			'cursor': 'pointer'
+		},
+		'wrapperRight': {
+			'float': 'left',
+			'width': '50%',
+			'textAlign': 'center',
+			'height': '50px',
+			'padding': 0,
+			'margin': '-13px',
+			'cursor': 'pointer'
+		}
+	}
+};
 
 var App = (function (_React$Component) {
 	_inherits(App, _React$Component);
@@ -35,7 +179,7 @@ var App = (function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2['default'].createElement(_libAnchoredJs2['default'], null);
+			return _react2['default'].createElement(_libTagSearchJs2['default'], { options: anchorOpts });
 		}
 	}]);
 
@@ -44,23 +188,237 @@ var App = (function (_React$Component) {
 
 (0, _reactDom.render)(_react2['default'].createElement(App, null), document.getElementById('anchor-search'));
 
+},{"../../lib/tag-search.js":4,"react":163,"react-dom":8}],2:[function(require,module,exports){
+/* */
+'use strict';
 
-},{"../../lib/anchored.js":2,"react":163,"react-dom":8}],2:[function(require,module,exports){
+'strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+var classes = {
+	'searchBar': '',
+	'input': '',
+	'inputDiv': '',
+	'searchList': '',
+	'ul': '',
+	'li': '',
+	'li:a': '',
+	'li:heading': '',
+	'context': ''
+};
+
+exports['default'] = classes;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+/* */
+'use strict';
+
+'strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+var styles = {
+	'searchBar': {
+		'height': '50px',
+		'width': '100%',
+		'position': 'fixed',
+		'bottom': 0,
+		'right': 0,
+		'zIndex': 1002,
+		'padding': 0
+	},
+	'input': {
+		'width': '100%',
+		'fontSize': '1.4em',
+		'fontWeight': 'bold',
+		'color': '#555',
+		'backgroundColor': '#f7f7f7',
+		'border': 'none',
+		'height': '50px',
+		'zIndex': 1003
+	},
+	'inputDiv': {
+		'paddingTop': 0,
+		'paddingRight': 0,
+		'paddingBottom': 0,
+		'paddingLeft': 8,
+		'height': '50px'
+	},
+	'searchList': {
+		'height': '300px',
+		'margin': '-370px 15px 0 15px',
+		'border': '1px solid #ccc',
+		'borderBottom': 'none',
+		'overflowY': 'auto',
+		'backgroundColor': '#fbfbfb',
+		'padding': '10px 20px',
+		'display': 'none'
+	},
+	'ul': {
+		'fontSize': '13px',
+		'listStyle': 'none',
+		'lineHeight': 1.2,
+		'margin': '0',
+		'padding': 0,
+		'position': 'relative',
+		'zIndex': 2
+	},
+	'li': {
+		'padding': '5px 5px',
+		'color': '#348dd9'
+	},
+	'li:a': {
+		'color': '#333',
+		'display': 'block',
+		'padding': '5px 5px 5px 0'
+	},
+	'li:heading': {
+		'fontSize': '1.25em',
+		'textTransform': 'uppercase',
+		'padding': '5px 5px',
+		'color': '#348dd9'
+	},
+	'context': {
+		'color': '#7a7a7a',
+		'fontSize': '.9em',
+		'display': 'block',
+		'marginTop': 0,
+		'height': 'auto'
+	},
+	'wrapper': {
+		'height': '50px',
+		'position': 'absolute',
+		'top': 0,
+		'right': 0,
+		'zIndex': 1022,
+		'padding': 0,
+		'width': '100%',
+		'backgroundColor': '#f7f7f7',
+		'color': '#7a7a7a'
+	},
+	'wrapperLeft': {
+		'float': 'left',
+		'width': '50%',
+		'textAlign': 'center',
+		'height': '50px',
+		'padding': 0,
+		'margin': '-13px',
+		'cursor': 'pointer'
+	},
+	'wrapperRight': {
+		'float': 'left',
+		'width': '50%',
+		'textAlign': 'center',
+		'height': '50px',
+		'padding': 0,
+		'margin': '-13px',
+		'cursor': 'pointer'
+	}
+
+};
+
+var defaultStyles = {
+	'searchBar': {},
+	'input': {},
+	'inputDiv': {},
+	'searchList': {},
+	'ul': {},
+	'li': {},
+	'li:a': {},
+	'li:heading': {},
+	'context': {},
+	'wrapper': {
+		'height': '50px',
+		'position': 'absolute',
+		'top': 0,
+		'right': 0,
+		'zIndex': 1022,
+		'padding': 0,
+		'width': '100%',
+		'backgroundColor': '#f7f7f7',
+		'color': '#7a7a7a'
+	},
+	'wrapperLeft': {
+		'float': 'left',
+		'width': '50%',
+		'textAlign': 'center',
+		'height': '50px',
+		'padding': 0,
+		'margin': '-13px',
+		'cursor': 'pointer'
+	},
+	'wrapperRight': {
+		'float': 'left',
+		'width': '50%',
+		'textAlign': 'center',
+		'height': '50px',
+		'padding': 0,
+		'margin': '-13px',
+		'cursor': 'pointer'
+	}
+
+};
+
+exports['default'] = styles;
+exports.defaultStyles = defaultStyles;
+
+},{}],4:[function(require,module,exports){
+/* */
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () {
+	function defineProperties(target, props) {
+		for (var i = 0; i < props.length; i++) {
+			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+		}
+	}return function (Constructor, protoProps, staticProps) {
+		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	};
+})();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) {
+	var _again = true;_function: while (_again) {
+		var object = _x,
+		    property = _x2,
+		    receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+			var parent = Object.getPrototypeOf(object);if (parent === null) {
+				return undefined;
+			} else {
+				_x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+			}
+		} else if ('value' in desc) {
+			return desc.value;
+		} else {
+			var getter = desc.get;if (getter === undefined) {
+				return undefined;
+			}return getter.call(receiver);
+		}
+	}
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) {
+	return obj && obj.__esModule ? obj : { 'default': obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) {
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError('Cannot call a class as a function');
+	}
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) {
+	if (typeof superClass !== 'function' && superClass !== null) {
+		throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
 var _react = require('react');
 
@@ -82,54 +440,58 @@ var _classes = require('./classes');
 
 var _classes2 = _interopRequireDefault(_classes);
 
-var __AS__Listeners = (function (_React$Component) {
-	_inherits(__AS__Listeners, _React$Component);
+var Tagged = (function (_React$Component) {
+	_inherits(Tagged, _React$Component);
 
-	function __AS__Listeners(props) {
-		_classCallCheck(this, __AS__Listeners);
+	function Tagged(props) {
+		_classCallCheck(this, Tagged);
 
-		_get(Object.getPrototypeOf(__AS__Listeners.prototype), 'constructor', this).call(this);
+		_get(Object.getPrototypeOf(Tagged.prototype), 'constructor', this).call(this);
 		this.displayName = 'anchorSearch';
 
 		this.state = {};
-		this._limiters = {};
 
-		var opts = _lodash2['default'].isObject(props.options) ? props.options : {};
+		// private vars
+		this._limiters = false;
+		this._typingBit = false;
+		this._menuBit = false;
+		this._tagCache = [];
+		this._searchTermCache = '';
+
+		var opts = 'object' === _jquery2['default'].type(props.options) ? props.options : {};
 
 		// Anchored props
 		this.state.Anchored = {
 			searchBar: opts.searchBar || 'searchBar',
 			placeholder: opts.placeholder || "quick find",
 			searchList: opts.searchList || 'searchList',
-			anchorSelector: opts.anchorSelector || 'a[name]',
-			displayTextUntilTag: opts.displayTextUntilTag || "a[name]",
-			displayName: opts.nameFromTag || ["H2", "H3", "H4"],
-			saveChildren: opts.nameFromTagSaveChildren || ':not("em, code")',
-			useLocation: opts.useLocation || true
+			tagSelector: opts.tagSelector || 'a[name]',
+			contextTextUntilTag: opts.contextTextUntilTag || "a[name]",
+			nameFromTag: opts.nameFromTag || ["H2", "H3", "H4"],
+			nameFromNextTag: opts.nameFromNextTag ? true : false,
+			nameFromTagAttr: opts.nameFromTagAttr || 'name',
+			nameFromTagSaveChildren: opts.nameFromTagSaveChildren || ':not("em, code")',
+			useLocation: opts.useLocation ? true : false,
+			noclasses: opts.noclasses ? true : false,
+			nostyles: opts.nostyles ? true : false,
+			forceSearch: opts.forceSearch || 2000,
+			wrapperLeftText: opts.wrapperLeftText || 'menu',
+			wrapperRightText: opts.wrapperRightText || 'search'
 		};
 		// classes
-		this.state.Anchored.classes = opts.noclasses ? {} : _lodash2['default'].defaultsDeep(opts.classes || {}, _classes2['default'].classes);
+		this.state.Anchored.classes = this.state.Anchored.noclasses ? _classes2['default'] : _lodash2['default'].defaults(opts.classes || {}, _classes2['default']);
 		// styles
-		this.state.Anchored.styles = opts.nostyles ? {} : _lodash2['default'].defaultsDeep(opts.styles || {}, _styles2['default'].styles);
+		this.state.Anchored.styles = this.state.Anchored.nostyles ? _styles.defaultStyles : _lodash2['default'].defaults(opts.styles || {}, _styles2['default']);
 
-		var anchored = _react2['default'].createElement(
-			'div',
-			{ id: this.state.Anchored.searchBar, style: this.state.Anchored.styles.searchBar, className: this.state.Anchored.classes.searchBar },
-			_react2['default'].createElement(
-				'div',
-				{ className: this.state.Anchored.classes.inputDiv, style: this.state.Anchored.styles.inputDiv },
-				_react2['default'].createElement('input', { style: this.state.Anchored.styles.input, type: 'text', placeholder: this.state.Anchored.placeholder, className: this.state.Anchored.classes.input }),
-				_react2['default'].createElement('nav', { style: this.state.Anchored.styles.searchList, className: this.state.Anchored.searchList + ' ' + this.state.Anchored.classes.searchList })
-			)
-		);
+		var anchored = _react2['default'].createElement('div', { id: this.state.Anchored.searchBar, style: this.state.Anchored.styles.searchBar, className: this.state.Anchored.classes.searchBar }, _react2['default'].createElement('div', { id: 'TSWrapper', style: this.state.Anchored.styles.wrapper }, _react2['default'].createElement('div', { id: 'TSWrapperLeft', style: this.state.Anchored.styles.wrapperLeft }, _react2['default'].createElement('h4', null, this.state.Anchored.wrapperLeftText)), _react2['default'].createElement('div', { id: 'TSWrapperRight', style: this.state.Anchored.styles.wrapperRight }, _react2['default'].createElement('h4', null, this.state.Anchored.wrapperRightText))), _react2['default'].createElement('div', { className: this.state.Anchored.classes.inputDiv, style: this.state.Anchored.styles.inputDiv }, _react2['default'].createElement('input', { style: this.state.Anchored.styles.input, type: 'text', placeholder: this.state.Anchored.placeholder, className: this.state.Anchored.classes.input }), _react2['default'].createElement('nav', { style: this.state.Anchored.styles.searchList, id: this.state.Anchored.searchList, className: this.state.Anchored.classes.searchList })));
 
 		this.state.__ANCHOREDr = location.pathname;
 		this.state.AnchorSearch = anchored;
 
-		this.state = _lodash2['default'].merge(this.state, props);
+		_jquery2['default'].extend(true, this.state, props);
 	}
 
-	_createClass(__AS__Listeners, [{
+	_createClass(Tagged, [{
 		key: 'render',
 		value: function render() {
 			// return React.cloneElement(Component, this.props)
@@ -170,26 +532,6 @@ var __AS__Listeners = (function (_React$Component) {
     * **/
 			thisComponent.setVars();
 		}
-		// end onUpdate
-	}, {
-		key: 'setVars',
-		value: function setVars() {
-			var thisComponent = this;
-			thisComponent.$list = (0, _jquery2['default'])('#' + this.state.Anchored.searchBar + ' .' + this.state.Anchored.searchList);
-			thisComponent.$searchDiv = (0, _jquery2['default'])('#' + this.state.Anchored.searchBar);
-			thisComponent.$searchInput = thisComponent.$searchDiv.find('input');
-			thisComponent.$allAnchors = (0, _jquery2['default'])(thisComponent.state.Anchored.anchorSelector);
-			return true;
-		}
-	}, {
-		key: 'stringClassFromObject',
-		value: function stringClassFromObject(cobj) {
-			var str = '';
-			_lodash2['default'].each(cobj, function (v, k) {
-				if (k) str += _lodash2['default'].kebabCase(k) + ':' + v + '; ';
-			});
-			return str;
-		}
 	}, {
 		key: 'onMount',
 		value: function onMount() {
@@ -206,183 +548,326 @@ var __AS__Listeners = (function (_React$Component) {
 
 			// hide the results when clicked outside
 			(0, _jquery2['default'])(document).on('mouseup', 'body', function (e) {
-				var $list = thisComponent.$list;
-				var $searchDiv = thisComponent.$searchDiv;
-
-				if (!$list.is(e.target) // if the target of the click isn't the container...
-				 && $list.has(e.target).length === 0 && ( // ... nor a descendant of the container
-				!$searchDiv.is(e.target) // if the target of the click isn't the main div...
-				 && $searchDiv.has(e.target).length === 0) // if the target of the click isn't the input...
-				) {
-						$list.hide();
-						(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').removeClass('active caution');
-						return;
-					}
+				thisComponent.hideSearchList(e);
 			});
 
 			// jump to first anchor on page that matches and give a list of matches
-			(0, _jquery2['default'])(document).on('input focus', '#' + thisComponent.state.Anchored.searchBar + ' input', function (e) {
-				/**
-     * until someone optimizes this for me
-     * we will rate limit and only run 
-     * 1 time every second
-     * */
-				if (thisComponent.rateLimited(thisComponent.state.Anchored.searchBar, 500)) {
-					return true;
-				}
-				var $list = thisComponent.$list;
-				var $searchBar = thisComponent.$searchInput;
-				var $allAnchors = thisComponent.$allAnchors;
-				var searchAnchors = {};
-				var isWide = document.body.clientWidth > 480;
-
-				var searchedFor = e.target.value.replace('.', ' ').replace('-', ' ').toLowerCase();
-				var $firstAnchor = false;
-
-				var aBit = false; // bit for anchor presence
-				var bBit = false; // bit for blob search results presence
-
-				$list.html('');
-
-				// set display names
-				var mainHeader = undefined;
-				if (location.pathname.search('api') > -1) {
-					mainHeader = 'Method';
-				} else {
-					mainHeader = 'Anchor';
-				}
-
-				var ustyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li:heading']);
-				var uclass = thisComponent.state.Anchored.classes['li:heading'];
-
-				// create the method ul
-				var $ul = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
-				$ul.append('<li class="' + uclass + '" style="' + ustyle + '">' + mainHeader + ' Matches</li>');
-
-				// create the search blob ui
-				var $ul2 = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
-				$ul2.append('<li class="' + uclass + '" style="' + ustyle + '">Search Matches</li>');
-
-				// store all li in case of no matches
-				var allAnchors = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
-				allAnchors.append('<li class="' + uclass + '" style="' + ustyle + '">' + mainHeader + 's</li>');
-
-				// create search lists
-				_lodash2['default'].forEach($allAnchors, function (v) {
-					var $anchor = (0, _jquery2['default'])(v);
-					var text = $anchor.nextUntil(thisComponent.state.Anchored.displayTextUntilTag).andSelf().text();
-
-					// set display names
-					var name = $anchor[0].name || '';
-					var displayName = $anchor[0].name || '';
-					var $next = $anchor.next();
-					if (thisComponent.state.Anchored.displayName.indexOf($next.prop("tagName")) > -1) {
-						displayName = $next.clone().children(thisComponent.state.Anchored.saveChildren).remove().end().text();
-					}
-
-					var listyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li']);
-					var liclass = thisComponent.state.Anchored.classes['li'];
-					var astyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li:a']);
-					var aclass = thisComponent.state.Anchored.classes['li:a'];
-					var cstyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['context']);
-					var cclass = thisComponent.state.Anchored.classes['context'];
-
-					// large blurb
-					var itemDesc = '<li class="' + liclass + '" style="' + listyle + '"><a  class="' + aclass + '" style="' + astyle + '"href="#' + name + '" >' + displayName + '</a><div class="' + cclass + '" style="' + cstyle + '">' + _lodash2['default'].trunc(text, { 'length': 150, 'separator': ' ' }) + '</div></li>';
-					// smal blurg
-					var item = '<li class="' + liclass + '" style="' + listyle + '"><a  class="' + aclass + '" style="' + astyle + '"href="#' + name + '" >' + displayName + '</a><div class="' + cclass + '" style="' + cstyle + '">' + _lodash2['default'].trunc(text, { 'length': 150, 'separator': ' ' }) + '</div></li>';
-
-					// full text search
-					if (searchedFor && text !== '') {
-						console.log('search', text.toLowerCase().search(searchedFor));
-						if (text.toLowerCase().search(searchedFor) > -1) {
-							$ul2.append(itemDesc);
-						}
-					}
-
-					// populate method list
-					if (searchedFor !== '' && name.replace('-', ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().search(searchedFor) > -1) {
-						console.log('add item');
-						$ul.append(item);
-						if (!$firstAnchor) {
-							$firstAnchor = $anchor;
-						}
-					}
-
-					allAnchors.append(item);
-				});
-
-				// set blob bit
-				bBit = $ul2[0].childElementCount > 1;
-				// set method bit
-				aBit = $ul[0].childElementCount > 1;
-
-				if (aBit) {
-
-					var goTo = location.pathname + '#' + $firstAnchor[0].name;
-					//console.log('push anchor', goTo)
-
-					// push the anchor to history and goto
-					if (thisComponent.state.Anchored.useLocation === true) {
-						window.location.href = goTo;
-					} else {
-						(0, _jquery2['default'])(document).scrollTop($firstAnchor.offset().top);
-					}
-					// if history object is available then push	
-					if (_lodash2['default'].isObject(thisComponent.props.history)) {
-						thisComponent.props.history.pushState(null, goTo);
-					}
-
-					// set background to normal
-					$searchBar.removeClass('caution').addClass('active');
-				} else if (!bBit) {
-					aBit = true;
-					$ul = allAnchors;
-					$searchBar.addClass('caution').removeClass('active');
-				}
-
-				if (!isWide || (!bBit || !aBit)) {
-					if (aBit) {
-						$list.append($ul);
-					}
-					if (bBit) {
-						$list.append($ul2);
-					}
-				} else {
-					// float left methods
-					$list.append((0, _jquery2['default'])(document.createElement("div")).css({ float: 'left', width: '50%' }).append($ul));
-					// float left blob search
-					$list.append((0, _jquery2['default'])(document.createElement("div")).css({ float: 'left', width: '50%' }).append($ul2));
-				}
-
-				$list.show();
+			(0, _jquery2['default'])(document).on('click input focus', '#' + thisComponent.state.Anchored.searchBar + ' input', function (e) {
+				thisComponent.wordWait(e.target.value);
 			});
-
-			// x for clear
-			function tog(v) {
-				return v ? 'addClass' : 'removeClass';
-			}
-			(0, _jquery2['default'])(document).on('#' + this.state.Anchored.searchBar + ' input', '.clearable', function () {
-				(0, _jquery2['default'])(this)[tog(this.value)]('x');
-				console.log('clearable');
-			}).on('mousemove', '.x', function (e) {
-				(0, _jquery2['default'])(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]('onX');
-			}).on('touchstart click', '.onX', function (ev) {
-				ev.preventDefault();
-				(0, _jquery2['default'])(this).removeClass('x onX').val('').change();
+			// open menu on single click
+			(0, _jquery2['default'])(document).on('click', '#TSWrapperLeft', function (e) {
+				thisComponent.checkMenu();
+			});
+			// show search on double click
+			(0, _jquery2['default'])(document).on('click', '#TSWrapperRight', function (e) {
+				thisComponent.checkTyping();
 			});
 		}
-		// end onMount
+	}, {
+		key: 'setVars',
+		value: function setVars() {
+			var thisComponent = this;
+			thisComponent.$list = (0, _jquery2['default'])('#' + this.state.Anchored.searchBar + ' #' + this.state.Anchored.searchList);
+			thisComponent.$searchDiv = (0, _jquery2['default'])('#' + this.state.Anchored.searchBar);
+			thisComponent.$searchInput = thisComponent.$searchDiv.find('input');
+			thisComponent.$allAnchors = (0, _jquery2['default'])(thisComponent.state.Anchored.tagSelector);
+			thisComponent.$wrapper = (0, _jquery2['default'])('#TSWrapper');
+			return true;
+		}
+	}, {
+		key: 'checkTyping',
+		value: function checkTyping() {
+			if (this._typingBit) {
+				this.disAllowTyping();
+			} else {
+				this.allowTyping();
+			}
+		}
+	}, {
+		key: 'allowTyping',
+		value: function allowTyping() {
+			this._typingBit = true;
+			this.$wrapper.hide();
+			this.$searchInput.focus();
+		}
+	}, {
+		key: 'disAllowTyping',
+		value: function disAllowTyping() {
+			this._typingBit = false;
+			this.$wrapper.show();
+		}
+	}, {
+		key: 'checkMenu',
+		value: function checkMenu() {
+			if (this._menuBit) {
+				this.hideMenu();
+			} else {
+				this.showMenu();
+			}
+		}
+	}, {
+		key: 'showMenu',
+		value: function showMenu() {
+			this._menuBit = true;
+			this.searchTags(this.$searchInput.val());
+		}
+	}, {
+		key: 'hideMenu',
+		value: function hideMenu() {
+			this._menuBit = false;
+			this.$list.hide();
+		}
 	}, {
 		key: 'catchMenuClick',
 		value: function catchMenuClick(e) {
-			console.log('catchMenuClick', e);
+			var thisComponent = this;
 			// catch a menu click and close any menus
-			var $list = this.$list;
+			var $list = thisComponent.$list;
 			$list.hide();
-
+			thisComponent.disAllowTyping();
 			// clean search bar status
-			this.$searchList.removeClass('active caution');
+			thisComponent.$searchInput.removeClass('active caution');
+		}
+	}, {
+		key: 'hideSearchList',
+		value: function hideSearchList(e) {
+			var thisComponent = this;
+			var $list = thisComponent.$list;
+			var $searchDiv = thisComponent.$searchDiv;
+
+			if (!$list.is(e.target) // if the target of the click isn't the container...
+			 && $list.has(e.target).length === 0 && ( // ... nor a descendant of the container
+			!$searchDiv.is(e.target) // if the target of the click isn't the main div...
+			 && $searchDiv.has(e.target).length === 0) // if the target of the click isn't the input...
+			) {
+					thisComponent.hideMenu();
+					(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').removeClass('active caution');
+					thisComponent.disAllowTyping();
+					return;
+				}
+		}
+	}, {
+		key: 'wordWait',
+		value: function wordWait(entry) {
+			var thisComponent = this;
+			if (!thisComponent._limiters) {
+				thisComponent._limiters = {
+					typed: entry
+				};
+				// open the list
+				//console.log('entry search')
+				return thisComponent.searchTags(entry);
+			}
+			var useMe = thisComponent._limiters;
+			var now = new Date().getTime();
+
+			// save the search term until done typing
+			useMe.typed = entry;
+
+			// kill the current interval
+			clearTimeout(thisComponent._limiters.interval);
+
+			// force search after specified time
+			if (useMe.force < now) {
+				//console.log('force search')
+				useMe.force = new Date().getTime() + this.state.Anchored.forceSearch;
+				thisComponent.searchTags(entry);
+				return false;
+			}
+
+			// update the forced search
+			useMe.force = new Date().getTime() + this.state.Anchored.forceSearch;
+
+			// set the interval to run the search
+			useMe.interval = setTimeout(function () {
+				//console.log('interval search')
+				thisComponent.searchTags(useMe.typed);
+				clearTimeout(thisComponent._limiters.interval);
+			}, 250);
+		}
+	}, {
+		key: 'searchTags',
+		value: function searchTags(search) {
+			var thisComponent = this;
+			var $list = thisComponent.$list;
+			var $searchInput = thisComponent.$searchInput;
+			var $allAnchors = thisComponent.$allAnchors;
+			var searchAnchors = {};
+			var isWide = document.body.clientWidth > 480;
+
+			// our search term fixed up
+			var searchedFor = search.replace('.', ' ').replace('-', ' ').toLowerCase();
+
+			var $firstAnchor = false;
+
+			var aBit = false; // bit for anchor presence
+			var bBit = false; // bit for blob search results presence
+
+			$list.html('');
+
+			// set display names
+			var mainHeader = undefined;
+			if (location.pathname.search('api') > -1) {
+				mainHeader = 'Method';
+			} else {
+				mainHeader = 'Anchor';
+			}
+
+			var ustyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li:heading']);
+			var uclass = thisComponent.state.Anchored.classes['li:heading'];
+
+			// create the method ul
+			var $ul = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
+			$ul.append('<li class="' + uclass + '" style="' + ustyle + '">' + mainHeader + ' Matches</li>');
+
+			// create the search blob ui
+			var $ul2 = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
+			$ul2.append('<li class="' + uclass + '" style="' + ustyle + '">Search Matches</li>');
+
+			// store all li in case of no matches
+			var allAnchors = (0, _jquery2['default'])(document.createElement("ul")).css(thisComponent.state.Anchored.styles.ul).addClass('catchMenuClick ' + thisComponent.state.Anchored.classes.ul);
+			allAnchors.append('<li class="' + uclass + '" style="' + ustyle + '">' + mainHeader + 's</li>');
+
+			// create search lists
+			$allAnchors.each(function (k, v) {
+				var $anchor = (0, _jquery2['default'])(v);
+				var text = $anchor.nextUntil(thisComponent.state.Anchored.contextTextUntilTag).andSelf().text();
+
+				// set display names
+				var name = $anchor[0][thisComponent.state.Anchored.nameFromTagAttr] || '';
+				var nameFromTag = $anchor[0][thisComponent.state.Anchored.nameFromTagAttr] || '';
+
+				// is the displayed name from the next tag
+				if (thisComponent.state.nameFromNextTag) {
+					var _$next = $anchor.next();
+				} else {
+					var _$next2 = $anchor;
+				}
+				if ('string' === typeof thisComponent.state.Anchored.nameFromTag && thisComponent.state.Anchored.nameFromTag.indexOf($next.prop("tagName")) > -1) {
+					nameFromTag = $next.clone().children(thisComponent.state.Anchored.nameFromTagSaveChildren).remove().end()[0][thisComponent.state.Anchored.nameFromTagAttr];
+				}
+
+				var listyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li']);
+				var liclass = thisComponent.state.Anchored.classes['li'];
+				var astyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['li:a']);
+				var aclass = thisComponent.state.Anchored.classes['li:a'];
+				var cstyle = thisComponent.stringClassFromObject(thisComponent.state.Anchored.styles['context']);
+				var cclass = thisComponent.state.Anchored.classes['context'];
+
+				// large blurb
+				var itemDesc = '<li class="' + liclass + '" style="' + listyle + '"><a  class="' + aclass + '" style="' + astyle + '"href="#' + name + '" >' + nameFromTag + '</a><div class="' + cclass + '" style="' + cstyle + '">' + _lodash2['default'].trunc(text, { 'length': 150, 'separator': ' ' }) + '</div></li>';
+				// smal blurg
+				var item = '<li class="' + liclass + '" style="' + listyle + '"><a  class="' + aclass + '" style="' + astyle + '"href="#' + name + '" >' + nameFromTag + '</a><div class="' + cclass + '" style="' + cstyle + '">' + _lodash2['default'].trunc(text, { 'length': 150, 'separator': ' ' }) + '</div></li>';
+
+				// full text search
+				if (searchedFor !== '' && text !== '') {
+					var searchArray = searchedFor.split(' ');
+					if (!Array.isArray(searchArray)) {
+						searchArray = [];
+					}
+					var wordy = searchArray.some(function (word) {
+						if (text.toLowerCase().search(word) > -1) {
+							$ul2.append(itemDesc);
+							return true;
+						}
+						return false;
+					});
+				}
+
+				// populate method list
+				if (searchedFor !== '' && name.replace('-', ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().search(searchedFor) > -1) {
+					$ul.append(item);
+					if (!$firstAnchor) {
+						$firstAnchor = $anchor;
+					}
+				}
+
+				allAnchors.append(item);
+			});
+
+			// set blob bit
+			bBit = $ul2[0].childElementCount > 1;
+			// set method bit
+			aBit = $ul[0].childElementCount > 1;
+
+			if (aBit && $firstAnchor[0].name) {
+				(function () {
+
+					var goTo = location.pathname + '#' + $firstAnchor[0].name;
+
+					// do we have history?	
+					var pushHistory = undefined;
+					var replaceHistory = undefined;
+					var _history = false;
+
+					if ('object' === _jquery2['default'].type(thisComponent.props.history)) {
+						if ('function' === _jquery2['default'].type(thisComponent.props.history.pushState)) {
+							pushHistory = function () {
+								console.log('push history');
+								thisComponent.props.history.pushState(null, goTo);
+							};
+							replaceHistory = function () {
+								console.log('replace history');
+								thisComponent.props.history.replaceState(null, goTo);
+							};
+							_history = true;
+						}
+					}
+
+					// push the anchor
+					if (!isWide || thisComponent.state.Anchored.useLocation === false) {
+						// mobiles loses focus on history & location so just move with scrollTop
+						(0, _jquery2['default'])(document).scrollTop($firstAnchor.offset().top);
+						if (_history) {
+							replaceHistory();
+						}
+					} else {
+						// use window and send to history if requested
+						window.location.href = goTo;
+						if (_history) {
+							replaceHistory();
+						}
+					}
+
+					// we lose focus on mobile when a location change happens
+					$searchInput.blur().focus();
+
+					// set background to normal
+					$searchInput.removeClass('caution').addClass('active');
+				})();
+			} else if (!bBit) {
+				aBit = true;
+				$ul = allAnchors;
+				$searchInput.addClass('caution').removeClass('active');
+			}
+
+			// reset the list so scroll goes to top
+			$list[0].innerHTML = '';
+			if (!isWide || (!bBit || !aBit)) {
+				if (aBit) {
+					$list.append($ul);
+				}
+				if (bBit) {
+					$list.append($ul2);
+				}
+			} else {
+				// float left methods
+				$list.append((0, _jquery2['default'])(document.createElement("div")).css({ float: 'left', width: '50%' }).append($ul));
+				// float left blob search
+				$list.append((0, _jquery2['default'])(document.createElement("div")).css({ float: 'left', width: '50%' }).append($ul2));
+			}
+
+			$list.show();
+		}
+	}, {
+		key: 'stringClassFromObject',
+		value: function stringClassFromObject(cobj) {
+			var str = '';
+			_jquery2['default'].each(cobj, function (k, v) {
+				if (k) str += _lodash2['default'].kebabCase(k) + ':' + v + '; ';
+			});
+			return str;
 		}
 	}, {
 		key: 'rateLimited',
@@ -393,7 +878,7 @@ var __AS__Listeners = (function (_React$Component) {
     * returns false if ok to run or new
     * **/
 			var timer = new Date().getTime();
-			if (_lodash2['default'].isNumber(this._limiters[id])) {
+			if ('number' === _jquery2['default'].type(this._limiters[id])) {
 				if (timer - this._limiters[id] < time) {
 					return true;
 				} else {
@@ -407,111 +892,13 @@ var __AS__Listeners = (function (_React$Component) {
 		}
 	}]);
 
-	return __AS__Listeners;
+	return Tagged;
 })(_react2['default'].Component);
 
-__AS__Listeners.propTypes = {};
-
-exports['default'] = __AS__Listeners;
+exports['default'] = Tagged;
 module.exports = exports['default'];
 
-
-},{"./classes":3,"./styles":4,"jquery":6,"lodash":7,"react":163}],3:[function(require,module,exports){
-'use strict';
-
-'strict';
-
-exports.classes = {
-	'searchBar': '',
-	'input': '',
-	'inputDiv': '',
-	'searchList': '',
-	'ul': '',
-	'li': '',
-	'li:a': '',
-	'li:heading': '',
-	'context': ''
-};
-
-
-},{}],4:[function(require,module,exports){
-'use strict';
-
-'strict';
-
-exports.styles = {
-	'searchBar': {
-		'height': '50px',
-		'position': 'fixed',
-		'bottom': 0,
-		'right': 0,
-		'zIndex': 1002,
-		'padding': 0,
-		'width': '100%'
-	},
-	'input': {
-		'width': '100%',
-		'fontSize': '1.4em',
-		'fontWeight': 'bold',
-		'color': '#555',
-		'backgroundColor': '#f7f7f7',
-		'border': 'none',
-		'height': '50px',
-		'zIndex': 1003
-	},
-	'inputDiv': {
-		'paddingTop': 0,
-		'paddingRight': 0,
-		'paddingBottom': 0,
-		'paddingLeft': 8,
-		'height': '50px'
-	},
-	'searchList': {
-		'height': '300px',
-		'margin': '-350px 15px 0 15px',
-		'border': '1px solid #ccc',
-		'borderBottom': 'none',
-		'overflowY': 'auto',
-		'backgroundColor': '#fbfbfb',
-		'padding': '10px 20px',
-		'display': 'none'
-	},
-	'ul': {
-		'fontSize': '13px',
-		'listStyle': 'none',
-		'lineHeight': 1.2,
-		'margin': '0',
-		'padding': 0,
-		'position': 'relative',
-		'zIndex': 2
-	},
-	'li': {
-		'padding': '5px 5px',
-		'color': '#348dd9'
-	},
-	'li:a': {
-		'color': '#333',
-		'display': 'block',
-		'padding': '5px 5px 5px 0'
-	},
-	'li:heading': {
-		'fontSize': '1.25em',
-		'textTransform': 'uppercase',
-		'padding': '5px 5px',
-		'color': '#348dd9'
-	},
-	'context': {
-		'color': '#7a7a7a',
-		'fontSize': '.9em',
-		'display': 'block',
-		'marginTop': 0,
-		'height': 'auto'
-	}
-
-};
-
-
-},{}],5:[function(require,module,exports){
+},{"./classes":2,"./styles":3,"jquery":6,"lodash":7,"react":163}],5:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
