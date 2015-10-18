@@ -10,10 +10,11 @@ System.config({
   },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
+    "app": "github:snowkeeper/tag-search@master",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "core-js": "npm:core-js@1.2.1",
@@ -22,7 +23,6 @@ System.config({
     "react": "npm:react@0.14.0",
     "react-dom": "npm:react-dom@0.14.0",
     "tag-search": "npm:tag-search@0.0.6",
-    "app": "npm:tag-search@0.0.6",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

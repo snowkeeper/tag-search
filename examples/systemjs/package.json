@@ -2,6 +2,7 @@
   "jspm": {
     "format": "es6",
     "dependencies": {
+      "app": "github:snowkeeper/tag-search@master",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.10.1",
       "react": "npm:react@^0.14.0",
