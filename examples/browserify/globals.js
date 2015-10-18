@@ -1,25 +1,170 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () {
+	function defineProperties(target, props) {
+		for (var i = 0; i < props.length; i++) {
+			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+		}
+	}return function (Constructor, protoProps, staticProps) {
+		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	};
+})();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) {
+	var _again = true;_function: while (_again) {
+		var object = _x,
+		    property = _x2,
+		    receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+			var parent = Object.getPrototypeOf(object);if (parent === null) {
+				return undefined;
+			} else {
+				_x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+			}
+		} else if ('value' in desc) {
+			return desc.value;
+		} else {
+			var getter = desc.get;if (getter === undefined) {
+				return undefined;
+			}return getter.call(receiver);
+		}
+	}
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) {
+	return obj && obj.__esModule ? obj : { 'default': obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) {
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError('Cannot call a class as a function');
+	}
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) {
+	if (typeof superClass !== 'function' && superClass !== null) {
+		throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
-var _reactDom = (window.ReactDOM);
-
-var _react = (window.React);
+var _react = window.React;
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = window.ReactDOM;
 
 var _libTagSearchJs = require('../../lib/tag-search.js');
 
 var _libTagSearchJs2 = _interopRequireDefault(_libTagSearchJs);
+
+var anchorOpts = {
+	useLocation: false,
+	nostyles: false,
+	noclasses: false,
+	searchBar: 'searchBar',
+	searchList: 'searchList',
+	tagSelector: 'a[name]',
+	wrapperLeftText: 'click for menu',
+	wrapperRightText: 'click to search',
+	styles: {
+		'searchBar': {
+			'height': '50px',
+			'width': '100%',
+			'position': 'fixed',
+			'bottom': 0,
+			'right': 0,
+			'zIndex': 1002,
+			'padding': 0
+		},
+		'input': {
+			'width': '100%',
+			'fontSize': '1.4em',
+			'fontWeight': 'bold',
+			'color': '#88C9FF',
+			'backgroundColor': '#30475B',
+			'border': 'none',
+			'height': '50px',
+			'zIndex': 1003
+		},
+		'inputDiv': {
+			'paddingTop': 0,
+			'paddingRight': 0,
+			'paddingBottom': 0,
+			'paddingLeft': 8,
+			'height': '50px'
+		},
+		'searchList': {
+			'height': '300px',
+			'margin': '-370px 15px 0 15px',
+			'border': '1px solid #ccc',
+			'borderBottom': 'none',
+			'overflowY': 'auto',
+			'backgroundColor': '#535A5F',
+			'padding': '10px 20px',
+			'display': 'none'
+		},
+		'ul': {
+			'fontSize': '13px',
+			'listStyle': 'none',
+			'lineHeight': 1.2,
+			'margin': '0',
+			'padding': 0,
+			'position': 'relative',
+			'zIndex': 2
+		},
+		'li': {
+			'padding': '5px 5px',
+			'color': '#CACFD2'
+		},
+		'li:a': {
+			'color': '#EEAE18',
+			'display': 'block',
+			'padding': '5px 5px 5px 0'
+		},
+		'li:heading': {
+			'fontSize': '1.25em',
+			'textTransform': 'uppercase',
+			'padding': '5px 5px',
+			'color': '#E8ECEF'
+		},
+		'context': {
+			'color': '#F1F1F4',
+			'fontSize': '.9em',
+			'display': 'block',
+			'marginTop': 0,
+			'height': 'auto'
+		},
+		'wrapper': {
+			'height': '50px',
+			'position': 'absolute',
+			'top': 0,
+			'right': 0,
+			'zIndex': 1022,
+			'padding': 0,
+			'width': '100%',
+			'backgroundColor': '#18222A',
+			'color': '#D0DDEA'
+		},
+		'wrapperLeft': {
+			'float': 'right',
+			'width': '50%',
+			'textAlign': 'center',
+			'height': '50px',
+			'padding': 0,
+			'margin': '-13px',
+			'cursor': 'pointer'
+		},
+		'wrapperRight': {
+			'float': 'left',
+			'width': '50%',
+			'textAlign': 'center',
+			'height': '50px',
+			'padding': 0,
+			'margin': '-13px',
+			'cursor': 'pointer'
+		}
+	}
+};
 
 var App = (function (_React$Component) {
 	_inherits(App, _React$Component);
@@ -34,7 +179,7 @@ var App = (function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return _react2['default'].createElement(_libTagSearchJs2['default'], null);
+			return _react2['default'].createElement(_libTagSearchJs2['default'], { options: anchorOpts });
 		}
 	}]);
 
@@ -172,6 +317,12 @@ var styles = {
 		'padding': 0,
 		'margin': '-13px',
 		'cursor': 'pointer'
+	},
+	'active': {
+		'backgroundColor': '#c9dbea'
+	},
+	'caution': {
+		'backgroundColor': '#efce9e'
 	}
 
 };
@@ -186,6 +337,12 @@ var defaultStyles = {
 	'li:a': {},
 	'li:heading': {},
 	'context': {},
+	'active': {
+		'backgroundColor': '#c9dbea'
+	},
+	'caution': {
+		'backgroundColor': '#efce9e'
+	},
 	'wrapper': {
 		'height': '50px',
 		'position': 'absolute',
@@ -229,21 +386,57 @@ Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () {
+	function defineProperties(target, props) {
+		for (var i = 0; i < props.length; i++) {
+			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+		}
+	}return function (Constructor, protoProps, staticProps) {
+		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	};
+})();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) {
+	var _again = true;_function: while (_again) {
+		var object = _x,
+		    property = _x2,
+		    receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+			var parent = Object.getPrototypeOf(object);if (parent === null) {
+				return undefined;
+			} else {
+				_x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+			}
+		} else if ('value' in desc) {
+			return desc.value;
+		} else {
+			var getter = desc.get;if (getter === undefined) {
+				return undefined;
+			}return getter.call(receiver);
+		}
+	}
+};
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) {
+	return obj && obj.__esModule ? obj : { 'default': obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) {
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError('Cannot call a class as a function');
+	}
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) {
+	if (typeof superClass !== 'function' && superClass !== null) {
+		throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
-var _react = (window.React);
+var _react = window.React;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _jquery = (window.$);
+var _jquery = window.$;
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -302,38 +495,7 @@ var Tagged = (function (_React$Component) {
 		// styles
 		this.state.Anchored.styles = this.state.Anchored.nostyles ? _styles.defaultStyles : _lodash2['default'].defaults(opts.styles || {}, _styles2['default']);
 
-		var anchored = _react2['default'].createElement(
-			'div',
-			{ id: this.state.Anchored.searchBar, style: this.state.Anchored.styles.searchBar, className: this.state.Anchored.classes.searchBar },
-			_react2['default'].createElement(
-				'div',
-				{ id: 'TSWrapper', style: this.state.Anchored.styles.wrapper },
-				_react2['default'].createElement(
-					'div',
-					{ id: 'TSWrapperLeft', style: this.state.Anchored.styles.wrapperLeft },
-					_react2['default'].createElement(
-						'h4',
-						null,
-						this.state.Anchored.wrapperLeftText
-					)
-				),
-				_react2['default'].createElement(
-					'div',
-					{ id: 'TSWrapperRight', style: this.state.Anchored.styles.wrapperRight },
-					_react2['default'].createElement(
-						'h4',
-						null,
-						this.state.Anchored.wrapperRightText
-					)
-				)
-			),
-			_react2['default'].createElement(
-				'div',
-				{ className: this.state.Anchored.classes.inputDiv, style: this.state.Anchored.styles.inputDiv },
-				_react2['default'].createElement('input', { style: this.state.Anchored.styles.input, type: 'text', placeholder: this.state.Anchored.placeholder, className: this.state.Anchored.classes.input }),
-				_react2['default'].createElement('nav', { style: this.state.Anchored.styles.searchList, id: this.state.Anchored.searchList, className: this.state.Anchored.classes.searchList })
-			)
-		);
+		var anchored = _react2['default'].createElement('div', { id: this.state.Anchored.searchBar, style: this.state.Anchored.styles.searchBar, className: this.state.Anchored.classes.searchBar }, _react2['default'].createElement('div', { id: 'TSWrapper', style: this.state.Anchored.styles.wrapper }, _react2['default'].createElement('div', { id: 'TSWrapperLeft', style: this.state.Anchored.styles.wrapperLeft }, _react2['default'].createElement('h4', null, this.state.Anchored.wrapperLeftText)), _react2['default'].createElement('div', { id: 'TSWrapperRight', style: this.state.Anchored.styles.wrapperRight }, _react2['default'].createElement('h4', null, this.state.Anchored.wrapperRightText))), _react2['default'].createElement('div', { className: this.state.Anchored.classes.inputDiv, style: this.state.Anchored.styles.inputDiv }, _react2['default'].createElement('input', { style: this.state.Anchored.styles.input, type: 'text', placeholder: this.state.Anchored.placeholder, className: this.state.Anchored.classes.input }), _react2['default'].createElement('nav', { style: this.state.Anchored.styles.searchList, id: this.state.Anchored.searchList, className: this.state.Anchored.classes.searchList })));
 
 		this.state.__ANCHOREDr = location.pathname;
 		this.state.AnchorSearch = anchored;
@@ -473,11 +635,11 @@ var Tagged = (function (_React$Component) {
 		value: function catchMenuClick(e) {
 			var thisComponent = this;
 			// catch a menu click and close any menus
-			var $list = thisComponent.$list;
-			$list.hide();
+			thisComponent.hideMenu();
 			thisComponent.disAllowTyping();
+
 			// clean search bar status
-			thisComponent.$searchInput.removeClass('active caution');
+			thisComponent.$searchInput.css('background-color', _styles2['default'].input.backgroundColor);
 		}
 	}, {
 		key: 'hideSearchList',
@@ -492,7 +654,7 @@ var Tagged = (function (_React$Component) {
 			 && $searchDiv.has(e.target).length === 0) // if the target of the click isn't the input...
 			) {
 					thisComponent.hideMenu();
-					(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').removeClass('active caution');
+					(0, _jquery2['default'])('#' + thisComponent.state.Anchored.searchBar + ' input').css('background-color', _styles2['default'].input.backgroundColor);
 					thisComponent.disAllowTyping();
 					return;
 				}
@@ -684,12 +846,12 @@ var Tagged = (function (_React$Component) {
 					$searchInput.blur().focus();
 
 					// set background to normal
-					$searchInput.removeClass('caution').addClass('active');
+					$searchInput.css('background-color', _styles2['default'].active.backgroundColor);
 				})();
 			} else if (!bBit) {
 				aBit = true;
 				$ul = allAnchors;
-				$searchInput.addClass('caution').removeClass('active');
+				$searchInput.css('background-color', _styles2['default'].caution.backgroundColor);
 			}
 
 			// reset the list so scroll goes to top

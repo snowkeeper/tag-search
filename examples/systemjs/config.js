@@ -14,7 +14,7 @@ System.config({
   },
 
   map: {
-    "app": "github:snowkeeper/tag-search@master",
+    "app": "npm:tag-search@0.0.9",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "core-js": "npm:core-js@1.2.1",
