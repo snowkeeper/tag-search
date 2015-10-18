@@ -8,7 +8,8 @@ There are also fully functional builds for System.js and browserify in the  [exa
 
 `npm i -g live-server` and run `live-server ./examples` to view the output of different setups. 
 
-![Imgur](http://i.imgur.com/rhY3BdF.png)
+![Imgur](http://i.imgur.com/rhY3BdF.png) ![Imgur](http://i.imgur.com/IkbLt6R.png?)
+
 
 #### Install
 ##### jspm

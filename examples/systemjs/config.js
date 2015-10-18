@@ -11,7 +11,6 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "app": "lib/tag-search.js"
   },
 
   map: {
@@ -22,6 +21,8 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "react": "npm:react@0.14.0",
     "react-dom": "npm:react-dom@0.14.0",
+    "tag-search": "npm:tag-search@0.0.6",
+    "app": "npm:tag-search@0.0.6",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
