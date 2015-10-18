@@ -34,8 +34,8 @@ let tagOpts = {
 	searchList: 'searchList',
 	tagSelector: 'a[name]',
 	contextTextUntilTag: "a[name]",
-	nameFromTag: ["H2", "H3", "H4"],
 	nameFromNextTag: true,
+    nameFromTag: ["H2", "H3", "H4"],
 	nameFromTagAttr: 'name',
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
@@ -82,8 +82,8 @@ render( <SearchTags options={tagOpts} {...this.props} />, document.getElementByI
 > **forceSearch** -  *{Number}* - The amount of time to allow for user input before the search is performed.  The user input is cached until done typing.  The default is to force a render at 2 seconds and start the cache over until typing is finished.
 
 **if `nameFromNextTag == true`**
-> > **nameFromTag** - *{Array}* -  name of the tag the get display name from   
-> > **nameFromTagSaveChildren**  - *{Boolean}* -  if you use `innerHTML` you may want to include some children    
+> > **nameFromTag** - *{Array}* -  name of the tag the get display name from. first tag found wins  
+> > **nameFromTagSaveChildren**  - *{String}* -  if you use `innerHTML` you may want to include some children.  It should be an acceptable JQuery selector for `$(nameFromNextTag).clone().children(nameFromTagSaveChildren)`  
 
 
 #####  NOTE  
