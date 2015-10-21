@@ -30,8 +30,8 @@ Assuming your html looks like this:
 <a name="endpoints"></a>
 <h3>Endpoint Api</h3>
 ```
-Create your component like so:
-All options are the defaults unless otherwise noted, with exception of styles and classes which are explained below. 
+Create your component.  
+All options are the default unless otherwise noted, with exception of styles and classes which are explained below. 
 
 ```javascript
 import { render } from 'react-dom'
