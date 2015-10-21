@@ -108,7 +108,35 @@ emitter.once('tag-search:options', (options) => {
 #####  NOTE  
 > If you pass a **react-router** `history` object as  `history={this.props.history}` or `{...this.props}` then the history will be pushed as well.  
 
+#####  NOTE  
+> Adds `document` listeners for clicks and to hide the menu. Will look for selector `.catchMenuClick a`.   
 
+```javascript  
+// catch menu clicks
+$(document).on('click', '.catchMenuClick a', function(e) {
+	thisComponent.catchMenuClick(e)
+});
+
+// hide the results when clicked outside
+$(document).on('mouseup','body', function (e)
+{
+	thisComponent.hideSearchList(e)
+})
+
+// jump to first anchor on page that matches and give a list of matches
+$(document).on('click input focus', '#' + thisComponent.state.Anchored.searchBar + ' input', function(e) {
+	thisComponent.wordWait(e.target.value);		
+});
+// open menu on single click
+$(document).on('click', '#TSWrapperLeft', function(e) {
+		thisComponent.checkMenu()	
+});
+// show search on click
+$(document).on('click', '#TSWrapperRight', function(e) {
+	thisComponent.checkTyping()			
+});
+
+```
 
 #### Default inline styles  
 The component will render with these inline styles by default.  Add your style properties with camelCase.  They will be transformed when appropriate.
