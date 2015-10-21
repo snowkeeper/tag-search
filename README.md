@@ -2,6 +2,8 @@
 
 Add a html tag search box to your page.  Uses ES6 ReactJS classes to produce a component you can consume into your react app.
 
+Typical use case is to look for named anchors and generate a menu.  Works well for mobile display.
+
 There are standalone builds available in the [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory.
 
 There are also fully functional builds for System.js and browserify in the  [examples](https://github.com/snowkeeper/tag-search/tree/master/examples) directory with full source examples.
@@ -20,6 +22,16 @@ npm i tag-search
 ```
 
 #### Example
+Assuming your html looks like this:
+```html
+<a name="classreference"></a>
+<h3>Class Refence</h3>
+... content ...
+<a name="endpoints"></a>
+<h3>Endpoint Api</h3>
+```
+Create your component like so:
+
 ```javascript
 import { render } from 'react-dom'
 import SearchTags from 'tag-search'
@@ -64,10 +76,40 @@ let tagOpts = {
 	}
 }
 
-render( <SearchTags events={emitter} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
+let tag = {
+	tag: '.create-anchor-links :header',
+    where: 'after', //default is before
+    class: 'anchor'
+}
 
-```  
-##### events
+render( <SearchTags tag={tag} events={emitter} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
+
+``` 
+## tag
+Send a `tag` prop to add name tags to your page via jquery.  This will add a named anchor either before or after your selected tags.  
+```javascript
+let tag = {
+	tag: '.create-anchor-links :header', //jquery selector
+    where: 'after', //default is before
+    class: 'anchor' //class for the anchor
+}
+```
+There is an event to add tags:
+```javascript
+events.emit('tag-search:tag', {
+	tag: '.create-anchor-links :header', //jquery selector
+    where: 'after', //default is before
+    class: 'anchor' //class for the anchor   
+});
+```
+And a response event:
+```javascript
+events.on('tag-search:tagged', (tags) => {
+    tags.success // true or false
+    tags.tags // jquery array to selected elements
+});
+```
+## events
 You can pass an event emitter as the `events` prop and a listener will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
 ```javascript
 emitter.emit('tag-search:update', {
@@ -90,10 +132,18 @@ events.on('tag-search:update', (cfg) => {
 });	
 events.on('tag-search:config', () => {
 	events.emit('tag-search:options', this.state.Anchored)
-});		
+});	
+events.on('tag-search:tag', (add) => {
+	this.addAnchors(add);
+    events.emit('tag-search:tagged', {
+        success: true || false,
+        tags: $hs // jquery array of selected tags
+    });
+});
+    
 
 ```
-##### options  
+## options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
 > **wrapperRightText** - *{String}* -  the "search" text  
 > **searchBar** - *{String}* - ID of main div  
