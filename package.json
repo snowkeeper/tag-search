@@ -27,7 +27,7 @@
   ],
   "browserify": {
     "transform": [
-	  "babelify"
+      "babelify"
     ]
   },
   "author": "snowkeeper",
@@ -42,21 +42,31 @@
     "gulp-minify": "0.0.5",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.4.2",
-    "jquery": "^2.1.4",
     "jspm": "^0.16.12",
     "live-server": "^0.8.1",
-    "lodash": "^3.10.1",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
     "reactify": "^1.1.1",
-    "systemjs": "^0.19.4",
-    "tag-search": "git://github.com/snowkeeper/tag-search",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"
   },
-   "jspm": {
+  "jspm": {
     "format": "es6",
-    "registry": "npm"
+    "registry": "npm",
+    "dependencies": {
+	  "debug": "^2.2.0",
+	  "jquery": "^2.1.4",
+	  "lodash": "^3.10.1",
+	  "react": "^0.14.0",
+	  "react-dom": "^0.14.0",
+	  "systemjs": "^0.19.4"
+	}
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "systemjs": "^0.19.4"
   }
 }
