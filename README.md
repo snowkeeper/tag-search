@@ -8,8 +8,6 @@ There are also fully functional builds for System.js and browserify in the  [exa
 
 `npm i -g live-server` and run `live-server ./examples` to view the output of different setups. 
 
-![Imgur](http://i.imgur.com/rhY3BdF.png) ![Imgur](http://i.imgur.com/IkbLt6R.png?)
-
 
 #### Install
 ##### jspm
@@ -25,6 +23,9 @@ npm i tag-search
 ```javascript
 import { render } from 'react-dom'
 import SearchTags from 'tag-search'
+import {Emitter} from 'events'
+
+let emitter = new Emitter();
 
 // add the options
 let tagOpts = {
@@ -34,6 +35,7 @@ let tagOpts = {
 	placeholder: "quick find",
 	searchList: 'searchList',
 	tagSelector: 'a[name]',
+    linkFromTagAttr: 'name',
 	contextTextUntilTag: "a[name]",
 	nameFromNextTag: true,
     nameFromTag: ["H2", "H3", "H4"],
@@ -61,17 +63,31 @@ let tagOpts = {
 	}
 }
 
-render( <SearchTags options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
+render( <SearchTags events={emitter} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
 
 ```  
-
-##### Options  
+##### events
+You can pass an event emitter as the `events` prop and a listener will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
+```javascript
+emitter.emit('tag-search:update', {
+	nameFromPrevTag: true,
+	nameFromTag: ["H2", "H3", "H4", "H5"],
+	linkFromTagAttr: 'data-link',
+	contextTextUntilTag: 'h*',
+	useLocation: true
+});
+emitter.once('tag-search:options', (options) => {
+	debug('new tag-search options', options)
+})
+```
+##### options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
 > **wrapperRightText** - *{String}* -  the "search" text  
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
-> **tageSelector** - *{String}* -  selector of tags to use for search list  
+> **tagSelector** - *{String}* -  selector of tags to use for search list  
+> **linkFromTagAttr** - *{String}* -  the links will be taked from this attribute in each `tagSelector`
 > **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
 > **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
 > **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
@@ -185,3 +201,4 @@ exports.classes = {
 **CAUTION**
 If you plan on using your own classes, either through  stylesheet or object,  you **must** send `nostyles: true` or a modified `styles` object with the styles you want removed (or a blank for each property).  If you do not then an inline style **will** take precedence.
 
+![Imgur](http://i.imgur.com/rhY3BdF.png) ![Imgur](http://i.imgur.com/IkbLt6R.png?)
