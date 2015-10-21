@@ -52,7 +52,7 @@ let tagOpts = {
     linkFromTagAttr: 'name',
 	contextTextUntilTag: "a[name]",
 	nameFromNextTag: true,
-    nameFromTag: [":header"],
+    nameFromTag: ["H2", "h3", "h4", "h5"],
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
     skipHistory: false, 
