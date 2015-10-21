@@ -83,33 +83,10 @@ let tag = {
     class: 'anchor'
 }
 
-render( <SearchTags tag={tag} events={emitter} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
+render( <SearchTags events={emitter} tag={tag} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
 
 ``` 
-## tag
-Send a `tag` prop to add name tags to your page via jquery.  This will add a named anchor either before or after your selected tags.  
-```javascript
-let tag = {
-	tag: '.create-anchor-links :header', //jquery selector
-    where: 'after', //default is before
-    class: 'anchor' //class for the anchor
-}
-```
-There is an event to add tags:
-```javascript
-events.emit('tag-search:tag', {
-	tag: '.create-anchor-links :header', //jquery selector
-    where: 'after', //default is before
-    class: 'anchor' //class for the anchor   
-});
-```
-And a response event:
-```javascript
-events.on('tag-search:tagged', (tags) => {
-    tags.success // true or false
-    tags.tags // jquery array to selected elements
-});
-```
+
 ## events
 You can pass an event emitter as the `events` prop and a listener will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
 ```javascript
@@ -143,6 +120,30 @@ events.on('tag-search:tag', (add) => {
 });
     
 
+```
+## tag
+Send a `tag` prop to add name tags to your page via jquery.  This will add a named anchor either before or after your selected tags.  
+```javascript
+let tag = {
+	tag: '.create-anchor-links :header', //jquery selector
+    where: 'after', //default is before
+    class: 'anchor' //class for the anchor
+}
+```
+There is an event to add tags:
+```javascript
+events.emit('tag-search:tag', {
+	tag: '.create-anchor-links :header', //jquery selector
+    where: 'after', //default is before
+    class: 'anchor' //class for the anchor   
+});
+```
+And a response event:
+```javascript
+events.on('tag-search:tagged', (tags) => {
+    tags.success // true or false
+    tags.tags // jquery array to selected elements
+});
 ```
 ## options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
