@@ -81,6 +81,18 @@ emitter.once('tag-search:options', (options) => {
 	debug('new tag-search options', options)
 })
 ```
+Available events
+```javascript
+events.on('tag-search:update', (cfg) => {
+	this.updateConfig(cfg, (options) => {
+		events.emit('tag-search:options', options)
+	});
+});	
+events.on('tag-search:config', () => {
+	events.emit('tag-search:options', this.state.Anchored)
+});		
+
+```
 ##### options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
 > **wrapperRightText** - *{String}* -  the "search" text  
