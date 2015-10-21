@@ -35,11 +35,11 @@ let tagOpts = {
 	placeholder: "quick find",
 	searchList: 'searchList',
 	tagSelector: 'a[name]',
+    nameFromTagAttr: 'name',
     linkFromTagAttr: 'name',
 	contextTextUntilTag: "a[name]",
 	nameFromNextTag: true,
     nameFromTag: ["H2", "H3", "H4"],
-	nameFromTagAttr: 'name',
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
     skipHistory: false,
@@ -100,9 +100,9 @@ events.on('tag-search:config', () => {
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
 > **tagSelector** - *{String}* -  selector of tags to use for search list  
+> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
 > **linkFromTagAttr** - *{String}* -  the a href links will be generated from this attribute in each `tagSelector`  
 > **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
-> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
 > **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
 > **useLocation** - *{Boolean}* -  Use `window.location` in place of `$(document).scrollTop`.  Defaults to `true` except for mobile.   
 > **skipHistory** - *{Boolean}* -  if you provided a history object already and need to skip using for any reason  
