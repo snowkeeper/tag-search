@@ -42,6 +42,7 @@ let tagOpts = {
 	nameFromTagAttr: 'name',
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
+    skipHistory: false,
     forceSearch: 2000,
 	noclasses: false,
 	nostyles: false,
@@ -87,11 +88,12 @@ emitter.once('tag-search:options', (options) => {
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
 > **tagSelector** - *{String}* -  selector of tags to use for search list  
-> **linkFromTagAttr** - *{String}* -  the links will be taked from this attribute in each `tagSelector`
+> **linkFromTagAttr** - *{String}* -  the links will be taked from this attribute in each `tagSelector`  
 > **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
 > **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
 > **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
-> **useLocation** - *{Boolean}* -  Use `window.location` instead of scroll  
+> **useLocation** - *{Boolean}* -  Use `window.location` in place of `$(document).scrollTop`.  Defaults to `true` except for mobile.   
+> **skipHistory** - *{Boolean}* -  if you provided a history object already and need to skip using for any reason  
 > **noclasses** - *{Boolean}* -  do **not** include **any** classes   
 > **nostyles** - *{Boolean}* -  do **not** include **any** styles  
 > **classes** - *{Object}* -  object of classes  
