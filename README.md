@@ -83,9 +83,33 @@ let tag = {
     class: 'anchor'
 }
 
-render( <SearchTags events={emitter} tag={tag} options={tagOpts} {...this.props} />, document.getElementById('anchor-search'));
+render( <SearchTags options={tagOpts} events={emitter} tag={tag} {...this.props} />, document.getElementById('anchor-search'));
 
 ``` 
+
+## options  
+> **wrapperLeftText** - *{String}* -  the "menu" text  
+> **wrapperRightText** - *{String}* -  the "search" text  
+> **searchBar** - *{String}* - ID of main div  
+> **placeholder** - *{String}* - placeholder text  
+> **searchList** - *{String}* -  ID of search list div  
+> **tagSelector** - *{String}* -  selector of tags to use for search list  
+> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
+> **linkFromTagAttr** - *{String}* -  the a href links will be generated from this attribute in each `tagSelector`  
+> **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
+> **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
+> **useLocation** - *{Boolean}* -  Use `window.location` in place of `$(document).scrollTop`.  Defaults to `true` except for mobile.   
+> **skipHistory** - *{Boolean}* -  if you provided a history object already and need to skip using for any reason  
+> **noclasses** - *{Boolean}* -  do **not** include **any** classes   
+> **nostyles** - *{Boolean}* -  do **not** include **any** styles  
+> **classes** - *{Object}* -  object of classes  
+> **styles** - *{Object}* -  object of styles  
+> **forceSearch** -  *{Number}* - The amount of time to allow for user input before the search is performed.  The user input is cached until done typing.  The default is to force a render at 2 seconds and start the cache over until typing is finished.
+
+**if `nameFromNextTag == true`**
+> > **nameFromTag** - *{Array}* -  name of the tag the get display name from. first tag found wins  
+> > **nameFromTagSaveChildren**  - *{String}* -  if you use `innerHTML` you may want to include some children.  It should be an acceptable JQuery selector for `$(nameFromNextTag).clone().children(nameFromTagSaveChildren)`  
+
 
 ## events
 You can pass an event emitter as the `events` prop and a listener will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
@@ -145,34 +169,11 @@ events.on('tag-search:tagged', (tags) => {
     tags.tags // jquery array to selected elements
 });
 ```
-## options  
-> **wrapperLeftText** - *{String}* -  the "menu" text  
-> **wrapperRightText** - *{String}* -  the "search" text  
-> **searchBar** - *{String}* - ID of main div  
-> **placeholder** - *{String}* - placeholder text  
-> **searchList** - *{String}* -  ID of search list div  
-> **tagSelector** - *{String}* -  selector of tags to use for search list  
-> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
-> **linkFromTagAttr** - *{String}* -  the a href links will be generated from this attribute in each `tagSelector`  
-> **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
-> **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
-> **useLocation** - *{Boolean}* -  Use `window.location` in place of `$(document).scrollTop`.  Defaults to `true` except for mobile.   
-> **skipHistory** - *{Boolean}* -  if you provided a history object already and need to skip using for any reason  
-> **noclasses** - *{Boolean}* -  do **not** include **any** classes   
-> **nostyles** - *{Boolean}* -  do **not** include **any** styles  
-> **classes** - *{Object}* -  object of classes  
-> **styles** - *{Object}* -  object of styles  
-> **forceSearch** -  *{Number}* - The amount of time to allow for user input before the search is performed.  The user input is cached until done typing.  The default is to force a render at 2 seconds and start the cache over until typing is finished.
-
-**if `nameFromNextTag == true`**
-> > **nameFromTag** - *{Array}* -  name of the tag the get display name from. first tag found wins  
-> > **nameFromTagSaveChildren**  - *{String}* -  if you use `innerHTML` you may want to include some children.  It should be an acceptable JQuery selector for `$(nameFromNextTag).clone().children(nameFromTagSaveChildren)`  
-
 
 #####  NOTE  
 > If you pass a **react-router** `history` object as  `history={this.props.history}` or `{...this.props}` then the history will be pushed as well.  
 
-#####  NOTE  
+## Listeners  
 > Adds `document` listeners for clicks and to hide the menu. Will look for selector `.catchMenuClick a`.   
 
 ```javascript  
