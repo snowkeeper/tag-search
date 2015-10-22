@@ -131,14 +131,14 @@ emitter.once('tag-search:options', (options) => {
 Available events responding to **`emit`**
 ```javascript
 // return emits tag-search:options
-events.emit('tag-search:update', newConfigParams);	 
+events.emit('tag-search:update', configObject);	 
 
 // get the current configuration object
 // return emits tag-search:options
 events.emit('tag-search:config');
 
 // return emits tag-search:tagged
-events.emit('tag-search:tag', thisComponent._eventTag);      
+events.emit('tag-search:tag', configObject);      
 ```
 Responding **`emit`** events
 ```javascript
