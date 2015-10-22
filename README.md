@@ -42,7 +42,7 @@ let emitter = new Emitter();
 
 // add the options
 let tagOpts = {
-	wrapperLeftText: 'menu',
+    wrapperLeftText: 'menu',
 	wrapperRightText: 'search',
 	searchBar: 'searchBar',
 	placeholder: "quick find",
@@ -83,10 +83,12 @@ let tag = {
     class: 'anchor'
 }
 
-render( <SearchTags options={tagOpts} events={emitter} tag={tag} {...this.props} />, document.getElementById('anchor-search'));
+render( <SearchTags reset={true} options={tagOpts} events={emitter} tag={tag} {...this.props} />, document.getElementById('anchor-search'));
 
 ``` 
-
+## reset
+Resets the config instead of merge after mount.     
+For events add `reset:true` to your configuration object.  
 ## options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
 > **wrapperRightText** - *{String}* -  the "search" text  
@@ -119,7 +121,8 @@ emitter.emit('tag-search:update', {
 	nameFromTag: ["H2", "H3", "H4", "H5"],
 	linkFromTagAttr: 'data-link',
 	contextTextUntilTag: 'h*',
-	useLocation: true
+	useLocation: true,
+    reset: true // creates a fresh config object
 });
 emitter.once('tag-search:options', (options) => {
 	debug('new tag-search options', options)
@@ -130,6 +133,7 @@ Available events responding to **`emit`**
 // return emits tag-search:options
 events.emit('tag-search:update', newConfigParams);	 
 
+// get the current configuration object
 // return emits tag-search:options
 events.emit('tag-search:config');
 
