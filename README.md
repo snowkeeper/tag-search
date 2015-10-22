@@ -47,7 +47,10 @@ let tagOpts = {
 	searchBar: 'searchBar',
 	placeholder: "quick find",
 	searchList: 'searchList',
-	tagSelector: 'a[name]',
+	topLink: true,
+    topLinkAnchor: 'name',
+    topLinkText: 'Top',
+    tagSelector: 'a[name]',
     nameFromTagAttr: 'innerHTML', //default name
     linkFromTagAttr: 'name',
 	contextTextUntilTag: "a[name]",
@@ -95,6 +98,9 @@ For events add `reset:true` to your configuration object.
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
+> **topLink** - *{Boolean}* -  Show a link on top of the list
+> **topLinkText** - *{String}* -  text of link
+> **topLinkAnchor** - *{String}* -  anchor href to scroll to
 > **tagSelector** - *{String}* -  selector of tags to use for search list  
 > **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
 > **linkFromTagAttr** - *{String}* -  the a href links will be generated from this attribute in each `tagSelector`  
