@@ -95,10 +95,10 @@ render( <SearchTags reset={true} options={tagOpts} events={emitter} tag={tag} {.
 Resets the config instead of merge after mount.     
 For events add `reset:true` to your configuration object.  
 ## options  
-> **wrapperLeftText** - *{String}* -  the "menu" text  
-> **wrapperRightText** - *{String}* -  the "search" text
-> **mainHeader** - *{String}* -  the header text for normal pages
-> **apiHeader** - *{String}* -  the header text for api type pages  
+> **wrapperLeftText** - *{String}* -  the "menu" text   
+> **wrapperRightText** - *{String}* -  the "search" text  
+> **mainHeader** - *{String}* -  the header text for normal pages  
+> **apiHeader** - *{String}* -  the header text for api type pages   
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
