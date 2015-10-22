@@ -52,7 +52,7 @@ let tagOpts = {
     linkFromTagAttr: 'name',
 	contextTextUntilTag: "a[name]",
 	nameFromNextTag: true,
-    nameFromTag: ["H2", "h3", "h4", "h5"],
+    nameFromTag: ["H2", "H3", "H4", "H5"],
 	nameFromTagSaveChildren: ':not("em, code")',
 	useLocation: true,
     skipHistory: false, 
@@ -112,7 +112,7 @@ render( <SearchTags options={tagOpts} events={emitter} tag={tag} {...this.props}
 
 
 ## events
-You can pass an event emitter as the `events` prop and a listener will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
+You can pass an event emitter as the `events` prop and event listeners will be attached to re-render the menu at any time.  Pass any new options as the data object and they will be merged into the configuration.  The new configuration is emitted back.
 ```javascript
 emitter.emit('tag-search:update', {
 	nameFromPrevTag: true,
@@ -125,25 +125,21 @@ emitter.once('tag-search:options', (options) => {
 	debug('new tag-search options', options)
 })
 ```
-Available events
+Available events responding to **`emit`**
 ```javascript
-events.on('tag-search:update', (cfg) => {
-	this.updateConfig(cfg, (options) => {
-		events.emit('tag-search:options', options)
-	});
-});	
-events.on('tag-search:config', () => {
-	events.emit('tag-search:options', this.state.Anchored)
-});	
-events.on('tag-search:tag', (add) => {
-	this.addAnchors(add);
-    events.emit('tag-search:tagged', {
-        success: true || false,
-        tags: $hs // jquery array of selected tags
-    });
-});
-    
+// return emits tag-search:options
+events.emit('tag-search:update', newConfigParams);	 
 
+// return emits tag-search:options
+events.emit('tag-search:config');
+
+// return emits tag-search:tagged
+events.emit('tag-search:tag', thisComponent._eventTag);      
+```
+Responding **`emit`** events
+```javascript
+events.emit('tag-search:options', configObject)	 
+events.emit('tag-search:tagged', results)	  
 ```
 ## tag
 Send a `tag` prop to add name tags to your page via jquery.  This will add a named anchor either before or after your selected tags.  
@@ -154,7 +150,7 @@ let tag = {
     class: 'anchor' //class for the anchor
 }
 ```
-There is an event to add tags:
+There is also an event to add tags:
 ```javascript
 events.emit('tag-search:tag', {
 	tag: '.create-anchor-links :header', //jquery selector
