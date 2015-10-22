@@ -103,7 +103,7 @@ For events add `reset:true` to your configuration object.
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
 > **topLink** - *{Boolean}* -  Show a link on top of the list
-> **topLinkText** - *{String}* -  text of link
+> **topLinkText** - *{String}* -  text of link  
 > **topLinkAnchor** - *{String}* -  anchor href to scroll to
 > **tagSelector** - *{String}* -  selector of tags to use for search list  
 > **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
