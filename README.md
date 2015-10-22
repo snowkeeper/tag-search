@@ -128,7 +128,7 @@ emitter.once('tag-search:options', (options) => {
 	debug('new tag-search options', options)
 })
 ```
-Available events responding to **`emit`**
+Available **`emit`** events for you to use 
 ```javascript
 // return emits tag-search:options
 events.emit('tag-search:update', configObject);	 
