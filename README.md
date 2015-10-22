@@ -164,7 +164,7 @@ events.emit('tag-search:tag', {
 ```
 And a response event:
 ```javascript
-events.on('tag-search:tagged', (tags) => {
+events.once('tag-search:tagged', (tags) => {
     tags.success // true or false
     tags.tags // jquery array to selected elements
 });
