@@ -140,10 +140,10 @@ events.emit('tag-search:config');
 // return emits tag-search:tagged
 events.emit('tag-search:tag', configObject);      
 ```
-Responding **`emit`** events
+Listen for results
 ```javascript
-events.emit('tag-search:options', configObject)	 
-events.emit('tag-search:tagged', results)	  
+events.on('tag-search:options', (configObject) => {})	 
+events.on('tag-search:tagged', (results) => {})	  
 ```
 ## tag
 Send a `tag` prop to add name tags to your page via jquery.  This will add a named anchor either before or after your selected tags.  
