@@ -1,6 +1,6 @@
 # tag-search 
 
-Add a html tag search box to your page.  Uses ES6 ReactJS classes to produce a component you can consume into your react app.
+Add a html tag search box to your page.  Uses ES6 ReactJS classes to produce a component you can consume into your react app. View [Screencaps](#screencaps)
 
 Typical use case is to look for named anchors and generate a menu.  Works well for mobile display.
 
@@ -292,4 +292,5 @@ exports.classes = {
 **CAUTION**
 If you plan on using your own classes, either through  stylesheet or object,  you **must** send `nostyles: true` or a modified `styles` object with the styles you want removed (or a blank for each property).  If you do not then an inline style **will** take precedence.
 
+##Screencaps
 ![Imgur](http://i.imgur.com/rhY3BdF.png) ![Imgur](http://i.imgur.com/IkbLt6R.png?)
