@@ -95,18 +95,18 @@ render( <SearchTags reset={true} options={tagOpts} events={emitter} tag={tag} {.
 Resets the config instead of merge after mount.     
 For events add `reset:true` to your configuration object.  
 ## options  
-> **wrapperLeftText** - *{String}* -  the "menu" text   
-> **wrapperRightText** - *{String}* -  the "search" text  
-> **mainHeader** - *{String}* -  the header text for normal pages  
-> **apiHeader** - *{String}* -  the header text for api type pages   
-> **searchBar** - *{String}* - ID of main div  
-> **placeholder** - *{String}* - placeholder text  
-> **searchList** - *{String}* -  ID of search list div  
-> **topLink** - *{Boolean}* -  Show a link on top of the list
-> **topLinkText** - *{String}* -  text of link  
-> **topLinkAnchor** - *{String}* -  anchor href to scroll to
-> **tagSelector** - *{String}* -  selector of tags to use for search list  
-> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from   
+> **wrapperLeftText** - *{String}* -  the "menu" text    
+> **wrapperRightText** - *{String}* -  the "search" text    
+> **mainHeader** - *{String}* -  the header text for normal pages   
+> **apiHeader** - *{String}* -  the header text for api type pages    
+> **searchBar** - *{String}* - ID of main div    
+> **placeholder** - *{String}* - placeholder text    
+> **searchList** - *{String}* -  ID of search list div    
+> **topLink** - *{Boolean}* -  Show a link on top of the list   
+> **topLinkText** - *{String}* -  text of link    
+> **topLinkAnchor** - *{String}* -  anchor href to scroll to   
+> **tagSelector** - *{String}* -  selector of tags to use for search list    
+> **nameFromTagAttr** - *{String}* -  the attribute to grab the name from    
 > **linkFromTagAttr** - *{String}* -  the a href links will be generated from this attribute in each `tagSelector`  
 > **contextTextUntilTag** - *{String}* - use the text until this tag is reached for the context string      
 > **nameFromNextTag** - *{Boolean}* -  get the display name from the next tag   
