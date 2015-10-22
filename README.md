@@ -44,6 +44,8 @@ let emitter = new Emitter();
 let tagOpts = {
     wrapperLeftText: 'menu',
 	wrapperRightText: 'search',
+    mainHeader: 'Anchor',
+	apiHeader: 'Method',
 	searchBar: 'searchBar',
 	placeholder: "quick find",
 	searchList: 'searchList',
@@ -94,7 +96,9 @@ Resets the config instead of merge after mount.
 For events add `reset:true` to your configuration object.  
 ## options  
 > **wrapperLeftText** - *{String}* -  the "menu" text  
-> **wrapperRightText** - *{String}* -  the "search" text  
+> **wrapperRightText** - *{String}* -  the "search" text
+> **mainHeader** - *{String}* -  the header text for normal pages
+> **apiHeader** - *{String}* -  the header text for api type pages  
 > **searchBar** - *{String}* - ID of main div  
 > **placeholder** - *{String}* - placeholder text  
 > **searchList** - *{String}* -  ID of search list div  
