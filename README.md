@@ -306,5 +306,5 @@ exports.classes = {
 **CAUTION**
 If you plan on using your own classes, either through  stylesheet or object,  you **must** send `nostyles: true` or a modified `styles` object with the styles you want removed (or a blank for each property).  If you do not then an inline style **will** take precedence.
 
-##Screencaps
+## Screencaps
 ![Imgur](http://i.imgur.com/rhY3BdF.png) ![Imgur](http://i.imgur.com/IkbLt6R.png?)
