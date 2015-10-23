@@ -1,6 +1,6 @@
 {
   "name": "tag-search",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "search and list html tags like named anchor links",
   "main": "lib/tag-search.js",
   "repository": {

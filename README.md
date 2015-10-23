@@ -118,7 +118,7 @@ For events add `reset:true` to your configuration object.
 > **styles** - *{Object}* -  object of styles  
 > **forceSearch** -  *{Number}* - The amount of time to allow for user input before the search is performed.  The user input is cached until done typing.  The default is to force a render at 2 seconds and start the cache over until typing is finished.
 
-**if `nameFromNextTag == true`**
+**if `nameFromNextTag == true` || `nameFromPrevTag == true`** 
 > > **nameFromTag** - *{Array}* -  name of the tag the get display name from. first tag found wins  
 > > **nameFromTagSaveChildren**  - *{String}* -  if you use `innerHTML` you may want to include some children.  It should be an acceptable JQuery selector for `$(nameFromNextTag).clone().children(nameFromTagSaveChildren)`  
 
