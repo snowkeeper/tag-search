@@ -1,11 +1,11 @@
 {
   "name": "tag-search",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "search and list html tags like named anchor links",
   "main": "lib/tag-search.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/snowkeeper/tag-search"
+    "url": "https://github.com/inquisive/tag-search"
   },
   "keywords": [
     "react",
